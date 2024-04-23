@@ -1,32 +1,26 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:.
 version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
+  install-and-persist:
+    executor: cypress/default
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Run tests
-          command: echo \"No test specified in package.json\"
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
+      - cypress/install
+      - persist_to_workspace:
+          paths:
+              - .cache/Cypress
+              - project
+          root: ~/  
+  run-tests:
+    executor: cypress/default
     steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+      - attach_workspace:
+          at: ~/
+      - cypress/run-tests:
+          cypress-command: npx cypress run --record --key a7898ec2-3282-41d1-bc8e-31af4c545c1f
 workflows:
-  build-and-test:
+  cy-test:
     jobs:
-      - test-node
-    # - deploy:
-    #     requires:
-    #       - test-node
+      - run-tests:
+          requires:
+            - install-and-persist
