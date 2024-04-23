@@ -13,18 +13,10 @@ jobs:
           pkg-manager: npm
       - run:
           name: Run tests
-          command: echo \"No test specified in package.json\"
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+          command: npx cypress run --record --key a7898ec2-3282-41d1-bc8e-31af4c545c1f
+
 workflows:
-  build-and-test:
+  cy-test:
     jobs:
       - test-node
     # - deploy:
