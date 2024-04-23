@@ -1,0 +1,23 @@
+{
+  "name": "cy_full_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^13.8.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3",
+    "mochawesome-report-generator": "^6.2.0",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:op": "cypress open",
+    "cy:run:night" : "npx cypress run --record --key a7898ec2-3282-41d1-bc8e-31af4c545c1f"
+  },
+  "author": "",
+  "license": "ISC"
+}
