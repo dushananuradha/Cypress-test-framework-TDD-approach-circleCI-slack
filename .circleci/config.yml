@@ -21,6 +21,5 @@ jobs:
 workflows:
   cy-test:
     jobs:
-      - run-tests:
-          requires:
-            - install-and-persist
+      - run-tests
+      - install-and-persist
