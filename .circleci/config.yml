@@ -1,24 +1,26 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:.
 version: 2.1
 orbs:
-  node: circleci/node@5
+  cypress: cypress-io/cypress@3.3.1
 jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
+  install-and-persist:
+    executor: cypress/default
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Run tests
-          command: npx cypress run --record --key a7898ec2-3282-41d1-bc8e-31af4c545c1f
-
+      - cypress/install
+      - persist_to_workspace:
+          paths:
+              - .cache/Cypress
+              - project
+          root: ~/  
+  run-tests:
+    executor: cypress/default
+    steps:
+      - attach_workspace:
+          at: ~/
+      - cypress/run-tests:
+          cypress-command: npx cypress run --record --key a7898ec2-3282-41d1-bc8e-31af4c545c1f
 workflows:
   cy-test:
     jobs:
-      - test-node
-    # - deploy:
-    #     requires:
-    #       - test-node
+      - run-tests:
+          requires:
+            - install-and-persist
