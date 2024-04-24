@@ -1,4 +1,4 @@
 {
-    "circleci.filters.myPipelinesOnly": false,
+    "circleci.filters.myPipelinesOnly": true,
     "circleci.filters.branchFilter": "currentBranch"
 }

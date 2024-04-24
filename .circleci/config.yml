@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@5
+  cypress: cypress-io/cypress@3.3.1
 jobs:
   install-and-persist:
     executor: cypress/default
@@ -21,6 +21,7 @@ jobs:
 workflows:
   cy-test:
     jobs:
-      - run-tests:
-          requires:
-            - install-and-persist
+    - install-and-persist
+    - run-tests:
+        requires: 
+          - install-and-persist
