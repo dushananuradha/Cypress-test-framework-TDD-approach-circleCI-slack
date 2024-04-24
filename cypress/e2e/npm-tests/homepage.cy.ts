@@ -10,7 +10,7 @@ describe("Home page", () => {
     cy.go("back").then(() => {
       cy.get('input[type="search"]').clear().type("cypress").click();
       cy.get('ul[aria-label="Search results"]', { timeout: 10000 }).contains('cypress-split').click()
-      cy.url().should('have.string','https://www.npmjs.com/package/cypress-spli')
+      cy.url().should('equal','https://www.npmjs.com/package/cypress-split')
     });
   });
 });
