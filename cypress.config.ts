@@ -2,7 +2,7 @@ import { defineConfig } from "cypress";
 require("dotenv").config();
 
 export default defineConfig({
-  projectId: "8gf4s5",
+  projectId: "a78kas",
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     charts: true,
