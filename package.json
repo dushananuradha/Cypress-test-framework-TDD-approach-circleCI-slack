@@ -16,7 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:op": "cypress open",
-    "cy:run:night" : "npx cypress run --record --key a7898ec2-3282-41d1-bc8e-31af4c545c1f"
+    "cy:run:night" : "npx cypress run --record --key 8b1354f4-34f4-444e-a610-387819f489df"
   },
   "author": "",
   "license": "ISC"
