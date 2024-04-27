@@ -34,16 +34,12 @@ jobs:
 workflows:
   cy-test:
     jobs:
-    - install-and-persist: 
-        <<: *global_filter
+    - install-and-persist
     - run-tests:
         requires: 
           - install-and-persist
-        <<: *global_filter
-    triggers:
-      - schedule:
-          cron: "10 21 * * *"
-          <<: *global_filter
+
+
 
     
           
