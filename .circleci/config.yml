@@ -39,8 +39,10 @@ workflows:
           requires: 
             - install-and-persist
           <<: *branch_filter
-
-
+    triggers:
+    - schedule:
+        cron: "35 21 * * *"
+        <<: *branch_filter
 
     
           
