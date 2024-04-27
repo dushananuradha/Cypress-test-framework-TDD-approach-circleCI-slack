@@ -3,7 +3,7 @@ version: 2.1
 x-filter: &global_filter
   filters:
     branches:
-      only: << pipeline.parameters.run_on_master >>
+      only: master
 
 parameters:
   run_on_master:
@@ -12,6 +12,7 @@ parameters:
 
 orbs:
   cypress: cypress-io/cypress@3.3.1
+
 jobs:
   install-and-persist:
     executor: cypress/default
@@ -29,6 +30,7 @@ jobs:
           at: ~/
       - cypress/run-tests:
           cypress-command: npx cypress run --record --key 8b1354f4-34f4-444e-a610-387819f489df
+
 workflows:
   cy-test:
     jobs:
@@ -40,7 +42,7 @@ workflows:
         <<: *global_filter
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "10 21 * * *"
           <<: *global_filter
 
     

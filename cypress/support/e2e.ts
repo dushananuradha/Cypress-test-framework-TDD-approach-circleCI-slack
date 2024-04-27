@@ -14,8 +14,19 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-import 'cypress-mochawesome-reporter/register';
+import "./commands";
+import "cypress-mochawesome-reporter/register";
+
+import { addCommands } from "cypress-mongodb/dist/index-browser";
+addCommands();
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      insertOne(document: any): Chainable<any>;
+    }
+  }
+}
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
