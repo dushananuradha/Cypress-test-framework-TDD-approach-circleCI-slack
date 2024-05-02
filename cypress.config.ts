@@ -4,9 +4,8 @@ require("dotenv").config();
 
 const dotenv = require('dotenv');
 const path = require('path');
-const fs = require('fs');
 const envFolderPath = './env_files';
-const envFiles = ['.env', '.envUI'];
+const envFile = process.env.ENV_FILE || '.env';
 
 export default defineConfig({
   projectId: "a78kas",
@@ -30,12 +29,9 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
-      envFiles.forEach((file) => {
-        dotenv.config({ path: path.resolve(__dirname, path.join(envFolderPath, file)) });
-      });
-      
-      config.env = Object.assign({}, config.env, process.env);
 
+      dotenv.config({ path: path.resolve(__dirname, path.join(envFolderPath, envFile)) });
+      config.env = Object.assign({}, config.env, process.env);
 
       on('task', {
         async insertOne({ uri, database, collection, document }: { uri: string, database: string, collection: string, document: object }) {
