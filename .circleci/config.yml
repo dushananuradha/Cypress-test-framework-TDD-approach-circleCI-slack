@@ -34,7 +34,11 @@ jobs:
 workflows:
   cy-test:
     jobs:
-      - install-and-persist: *branch_filter
+      - install-and-persist:           
+          filters:
+            branches:
+              only:
+                - master
       - run-tests:
           requires: 
             - install-and-persist
