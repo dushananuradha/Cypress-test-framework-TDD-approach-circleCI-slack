@@ -38,11 +38,17 @@ workflows:
       - run-tests:
           requires: 
             - install-and-persist
-          <<: *branch_filter
+          filters:
+            branches:
+              only:
+                - master
     triggers:
     - schedule:
         cron: "35 21 * * *"
-        <<: *branch_filter
+        filters:
+            branches:
+              only:
+                - master
 
     
           

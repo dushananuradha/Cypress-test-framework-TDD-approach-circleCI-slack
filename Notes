@@ -1,0 +1,27 @@
+For Unix-like env config command
+ - npm install --save-dev cross-env
+ - "cy:op:common": "cross-env ENV_FILE=.env cypress open"
+    - cross-env will set the ENV_FILE environment variable before running the cypress run command
+ - replace .env and .envUI with the actual paths
+
+Without installing cross-env
+"cy:op:setcommon": "set ENV_FILE=.env&&cypress open"
+    - ENV_FILE : environment variable that is set to the name of the .env file you want to use.
+    - set command: to set environment variables in Windows
+    - && : to run multiple commands on the same line 
+
+const envFolderPath = './env_files';
+ - envFolderPath represents path to directory in  file system
+ - So './env_files' points to a directory named env_files in the same directory as the script
+
+const envFile = process.env.ENV_FILE || '.env';
+ - process.env.ENV_FILE retrieves the value of the ENV_FILE environment variable
+ - If ENV_FILE, it defaults to .env
+
+dotenv.config({ path: path.resolve(__dirname, path.join(envFolderPath, envFile)) });
+ - path.join(envFolderPath, envFile) joins the envFolderPath and envFile together to create the full path to  environment file. 
+ - This full path is then used by dotenv.config() to load the variables from env file into process.env
+
+config.env = Object.assign({}, config.env, process.env);
+ - merging the config.env and process.env objects into a new object and assigning it back to config.env
+ - Cypress will then use updated the environment variables object when it runs.
