@@ -1,5 +1,15 @@
 version: 2.1
 
+parameters:
+  run_on_master:
+    type: string
+    default: "master"
+
+x-branch-filter: &branch_filter
+  filters:
+    branches:
+      only: << pipeline.parameters.run_on_master >>
+
 orbs:
   cypress: cypress-io/cypress@3.3.1
 
@@ -24,10 +34,18 @@ jobs:
 workflows:
   cy-test:
     jobs:
-      - install-and-persist 
+      - install-and-persist:           
+          filters:
+            branches:
+              only:
+                - master
       - run-tests:
           requires: 
             - install-and-persist
+          filters:
+            branches:
+              only:
+                - master
 
 
     

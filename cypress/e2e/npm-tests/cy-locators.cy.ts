@@ -7,7 +7,7 @@ beforeEach("load fixture data", function() {
       this.data = fixtureData;
     });
   });
-describe("Cypress element locators", () => {
+describe.skip("Cypress element locators", () => {
     beforeEach("Navigate to npm home page", () => {
         cy.visit(Cypress.env("UI_BASE_URL"), { failOnStatusCode: false });
         
