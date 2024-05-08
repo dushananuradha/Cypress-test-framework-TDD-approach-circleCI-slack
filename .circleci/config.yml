@@ -47,6 +47,12 @@ workflows:
               only:
                 - master
 
-
-    
+    triggers:
+    - schedule:
+        cron: "0 14 * * *"
+        filters:
+          branches:
+            only:
+              - master
+      
           
