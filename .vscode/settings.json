@@ -1,4 +1,7 @@
 {
     "circleci.filters.myPipelinesOnly": true,
-    "circleci.filters.branchFilter": "currentBranch"
+    "circleci.filters.branchFilter": "currentBranch",
+    "circleci.persistedProjectSelection": [
+        "circleci/GncBDAVuYyDMG2oEp6BpDM/T3YNE7z8wuo36bQ3GQNa6E"
+    ]
 }
