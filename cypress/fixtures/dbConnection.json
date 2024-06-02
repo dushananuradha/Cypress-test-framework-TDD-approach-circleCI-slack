@@ -1,0 +1,5 @@
+{
+    "MONGO_URI": "mongodb+srv://ohda456:5QQekAsyx9HiZeF6@cluster0.umyzbdy.mongodb.net/admin?retryWrites=true&loadBalanced=false&replicaSet=atlas-7mawdv-shard-0&readPreference=primary&srvServiceName=mongodb&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1",
+    "dbName": "test_database",
+    "collection": "user_profile_data"
+}

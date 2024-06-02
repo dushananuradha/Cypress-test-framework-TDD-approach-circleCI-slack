@@ -25,7 +25,7 @@
     "cy:op": "cypress open",
     "cy:run:night": "npx cypress run --record --key 8b1354f4-34f4-444e-a610-387819f489df",
     "cy:op:setcommon": "set ENV_FILE=.env&&cypress open",
-    "cy:run:common:spec": "set ENV_FILE=.env&&cypress run --spec 'cypress/e2e/npm-tests/npm_homepage.cy.ts'", 
+    "cy:run:common:spec": "set ENV_FILE=.env&&cypress run --spec 'cypress/e2e/npm-tests/test-mongodb.cy.ts'", 
     "cy:op:setui": "set ENV_FILE=.envUI&&cypress open",
     "cy:run:setui:smoke": "set ENV_FILE=.envUI&&cypress run --env grep=smoke --browser chrome"
   },
