@@ -7,7 +7,8 @@ beforeEach("load fixture data", function() {
       this.data = fixtureData;
     });
   });
-describe.skip("Cypress element locators", () => {
+
+describe("Cypress element locators", () => {
     beforeEach("Navigate to npm home page", () => {
         cy.visit(Cypress.env("UI_BASE_URL"), { failOnStatusCode: false });
         
@@ -17,7 +18,7 @@ describe.skip("Cypress element locators", () => {
         cy.url().should('equal', Cypress.env("UI_BASE_URL"))
     });
 
-    it("element capturing", ()=>{
+    it("smoke: element capturing", ()=>{
         cy.get('.et_pb_text_inner > ul').within(()=>{
             cy.get('li').eq(0).contains('Big page with many elements')
             cy.get('li > a').eq(1).should('have.attr', 'href', '../fake-landing-page');
@@ -25,7 +26,7 @@ describe.skip("Cypress element locators", () => {
     })
 
     it("dynamic testing using fixtures", function() {
-        cy.get('li > a').eq(3).should('have.attr', 'href', '../Fill out forms').click();
+        cy.get('li > a').filter(':contains("Fill out forms")').should('have.attr', 'href', 'https://ultimateqa.com/filling-out-forms/').click();
         cy.url().should('equal', Cypress.env("UI_BASE_URL"))
         cy.log(this.data.company);
         cy.log(this.data.contact_name);
