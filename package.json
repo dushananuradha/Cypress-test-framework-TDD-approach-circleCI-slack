@@ -11,6 +11,7 @@
     "mongodb": "^6.5.0"
   },
   "devDependencies": {
+    "@cypress/grep": "^4.0.1",
     "@types/mongodb": "^4.0.7",
     "cross-env": "^7.0.3",
     "mochawesome": "^7.1.3",
@@ -23,6 +24,7 @@
     "cy:run:night": "npx cypress run --record --key 8b1354f4-34f4-444e-a610-387819f489df",
     "cy:op:setcommon": "set ENV_FILE=.env&&cypress open",
     "cy:op:setui": "set ENV_FILE=.envUI&&cypress open",
+    "cy:run:setui:smoke": "set ENV_FILE=.envUI&&cypress run --env grep=smoke --browser chrome",
     "cy:op:common": "cross-env ENV_FILE=.env cypress open",
     "cy:op:ui": "cross-env ENV_FILE=.envUI cypress open"
   },
