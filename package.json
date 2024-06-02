@@ -8,12 +8,14 @@
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-mongodb": "^6.2.0",
     "dotenv": "^16.4.5",
-    "mongodb": "^6.5.0"
+    "mongodb": "^6.5.0",
+    "xpath": "^0.0.34"
   },
   "devDependencies": {
     "@cypress/grep": "^4.0.1",
     "@types/mongodb": "^4.0.7",
     "cross-env": "^7.0.3",
+    "cypress-xpath": "^2.0.1",
     "mochawesome": "^7.1.3",
     "mochawesome-report-generator": "^6.2.0",
     "typescript": "^5.4.5"
@@ -23,10 +25,9 @@
     "cy:op": "cypress open",
     "cy:run:night": "npx cypress run --record --key 8b1354f4-34f4-444e-a610-387819f489df",
     "cy:op:setcommon": "set ENV_FILE=.env&&cypress open",
+    "cy:run:common:spec": "set ENV_FILE=.env&&cypress run --spec 'cypress/e2e/npm-tests/npm_homepage.cy.ts'", 
     "cy:op:setui": "set ENV_FILE=.envUI&&cypress open",
-    "cy:run:setui:smoke": "set ENV_FILE=.envUI&&cypress run --env grep=smoke --browser chrome",
-    "cy:op:common": "cross-env ENV_FILE=.env cypress open",
-    "cy:op:ui": "cross-env ENV_FILE=.envUI cypress open"
+    "cy:run:setui:smoke": "set ENV_FILE=.envUI&&cypress run --env grep=smoke --browser chrome"
   },
   "author": "",
   "license": "ISC"
