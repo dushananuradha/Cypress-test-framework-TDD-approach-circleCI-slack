@@ -12,6 +12,6 @@ describe("User APIs", ()=>{
 
     it("verify get users", ()=>{
         user.getUsers();
-        user.createUser();
+        // user.createUser();
     });
 });

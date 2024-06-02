@@ -20,7 +20,6 @@ export class userAPI {
 
   public createUser() {
     request.POST(apiPath, user_payload).then((res: any) => {
-      console.log("retrieved: ", res);
       expect(res.status).to.eq(200);
     });
     return this;
