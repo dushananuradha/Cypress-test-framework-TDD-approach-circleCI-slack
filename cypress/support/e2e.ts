@@ -24,7 +24,7 @@ addCommands();
 declare global {
   namespace Cypress {
     interface Chainable {
-      insertOne(document: any): Chainable<any>;
+
     }
   }
 }

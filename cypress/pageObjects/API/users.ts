@@ -1,5 +1,5 @@
-import { APIRequest } from "../API/globalAPIS";
-import { userJSON } from "../API/user_data";
+import { APIRequest } from "./globalAPIS";
+import { userJSON } from "./user_data";
 
 const user_payload = userJSON;
 let request = new APIRequest();

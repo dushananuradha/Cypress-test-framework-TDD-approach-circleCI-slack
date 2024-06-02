@@ -1,54 +1,47 @@
 import { defineConfig } from "cypress";
-import { MongoClient } from 'mongodb';
+// import { MongoClient } from 'mongodb';
+// import dbConnection from "./cypress/fixtures/dbConnection.json";
+import { dbTasks } from "./cypress/support/dbTasks";
 require("dotenv").config();
 
-const dotenv = require('dotenv');
-const path = require('path');
-const envFolderPath = './env_files';
-const envFile = process.env.ENV_FILE || '.env';
+const dotenv = require("dotenv");
+const path = require("path");
+const envFolderPath = "./env_files";
+const envFile = process.env.ENV_FILE || ".env";
 
 export default defineConfig({
   projectId: "a78kas",
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     charts: true,
-    reportPageTitle: 'Test Report - Amazon',
+    reportPageTitle: "Test Report - Amazon",
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
   },
 
-  env: {
-    mongodb: {
-      uri: 'mongodb+srv://ohda456:5QQekAsyx9HiZeF6@cluster0.umyzbdy.mongodb.net/',
-      database: 'test_database',
-      collection: 'user_profile_data'
-    }
-  },
-
   e2e: {
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
+      require("cypress-mochawesome-reporter/plugin")(on);
 
-      dotenv.config({ path: path.resolve(__dirname, path.join(envFolderPath, envFile)) });
+      dotenv.config({
+        path: path.resolve(__dirname, path.join(envFolderPath, envFile)),
+      });
       config.env = Object.assign({}, config.env, process.env);
 
-      on('task', {
-        async insertOne({ uri, database, collection, document }: { uri: string, database: string, collection: string, document: object }) {
-          const client = new MongoClient(uri);
+      // on('task', {
+      //   async createUser({ record }) {
+      //     const client = new MongoClient(dbConnection.MONGO_URI);
+      //     await client.connect();
+      //     const db = client.db(dbConnection.dbName);
+      //     const collection = db.collection(dbConnection.collection);
+      //     const result = await collection.insertOne(record);
+      //     await client.close();
+      //     return result;
+      //   }
+      // });
 
-          try {
-            await client.connect();
-            const db = client.db(database);
-            const result = await db.collection(collection).insertOne(document);
-            return result;
-          } catch (err) {
-            console.error(err);
-          } finally {
-            await client.close();
-          }
-        }
-      });
+      on("task", dbTasks);
 
       return config;
     },

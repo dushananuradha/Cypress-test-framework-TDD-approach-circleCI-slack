@@ -25,3 +25,8 @@ dotenv.config({ path: path.resolve(__dirname, path.join(envFolderPath, envFile))
 config.env = Object.assign({}, config.env, process.env);
  - merging the config.env and process.env objects into a new object and assigning it back to config.env
  - Cypress will then use updated the environment variables object when it runs.
+
+import dbConnection from "./cypress/fixtures/dbConnection.json";
+ - Added following options in "compilerOptions"
+    - "esModuleInterop": true
+    - "resolveJsonModule": true

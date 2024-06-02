@@ -40,14 +40,7 @@ require('cypress-xpath');
 // }
 
 
-Cypress.Commands.add('insertOne', (document) => {
-    return cy.task('insertOne', {
-      uri: Cypress.env('mongodb').uri,
-      database: Cypress.env('mongodb').database,
-      collection: Cypress.env('mongodb').collection,
-      document: document
-    });
-  });
+
   
   
   
