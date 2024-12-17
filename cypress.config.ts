@@ -9,6 +9,10 @@ const path = require("path");
 const envFolderPath = "./env_files";
 const envFile = process.env.ENV_FILE || ".env";
 
+//dbTestig with mySQL
+const mysql = require("mysql");
+
+
 export default defineConfig({
   projectId: "a78kas",
   reporter: "cypress-mochawesome-reporter",
@@ -39,11 +43,41 @@ export default defineConfig({
       //     await client.close();
       //     return result;
       //   }
-      // });
+      // });on("task", dbTasks);
 
-      on("task", dbTasks);
+      on("task", {
+        queryDb: (query) => {
+          return queryTestDb(query, config);
+        }
+      })
 
       return config;
     },
+    "env": {
+      "db": {
+        "host": "localhost",
+        user: "root",
+        password: "password",
+        database: "cypresstest",
+        port: 3306
+      }
+    }
   },
 });
+
+function queryTestDb(query, config) {
+  //create new mysql connection using credentials from cypress.json
+  const connection = mysql.createConnection(config.env.db);
+  //start connection 
+  connection.connect();
+//execute query + disconnect 
+  return new Promise((resolve, reject) => {
+    connection.query(query, (error, results) => {
+      if (error) reject(error);
+      else {
+        connection.end();
+        return resolve(results);
+      }
+    });
+  });
+}

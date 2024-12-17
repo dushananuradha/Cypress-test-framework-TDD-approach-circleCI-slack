@@ -11,7 +11,7 @@ Without installing cross-env
     - && : to run multiple commands on the same line 
 
 const envFolderPath = './env_files';
- - envFolderPath represents path to directory in  file system
+ - envFolderPath represents path to directory in file system
  - So './env_files' points to a directory named env_files in the same directory as the script
 
 const envFile = process.env.ENV_FILE || '.env';

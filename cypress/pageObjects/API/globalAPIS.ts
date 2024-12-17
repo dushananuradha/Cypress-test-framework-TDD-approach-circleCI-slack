@@ -6,6 +6,7 @@ let headers: any = null;
 
 export class APIRequest {
 
+    // Optional parameter (denoted by ?:)
     public GET(apiPath, body, headers?: {}) {
         return cy.request({
             url: apiPath,
@@ -14,6 +15,7 @@ export class APIRequest {
         });
     }
 
+    // Optional parameter (denoted by ?:)
     public POST(body, headers?: {}) {
         cy.log("apiPAth_create: ", apiPath)
         return cy.request({
