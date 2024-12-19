@@ -47,12 +47,10 @@ workflows:
               only:
                 - master
 
-    triggers:
-    - schedule:
-        cron: "30 12 * * *"
-        filters:
-          branches:
-            only:
-              - master
-      
-          
+triggers:
+  - schedule:
+      cron: "30 12 * * *" # This runs at 10:30 PM AEST (12:30 PM UTC)
+      filters:
+        branches:
+          only:
+            - master
