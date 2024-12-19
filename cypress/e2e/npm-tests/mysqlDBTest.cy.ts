@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+// /// <reference types="cypress" />
 
 // describe("Testing mySQL DB", ()=>{
 //     it("check table: employees", ()=>{
