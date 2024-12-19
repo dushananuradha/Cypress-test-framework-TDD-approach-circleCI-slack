@@ -10,6 +10,7 @@ beforeEach("load fixture data", function() {
 
 describe("Cypress element locators", () => {
     beforeEach("Navigate to npm home page", () => {
+        cy.log(`UI_BASE_URL: ${Cypress.env("UI_BASE_URL")}`);
         cy.visit(Cypress.env("UI_BASE_URL"), { failOnStatusCode: false });
         
     });
