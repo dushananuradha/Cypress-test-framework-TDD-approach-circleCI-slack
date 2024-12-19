@@ -9,6 +9,7 @@
     "cypress-mongodb": "^6.2.0",
     "dotenv": "^16.4.5",
     "mongodb": "^6.5.0",
+    "mysql2": "^3.11.5",
     "xpath": "^0.0.34"
   },
   "devDependencies": {

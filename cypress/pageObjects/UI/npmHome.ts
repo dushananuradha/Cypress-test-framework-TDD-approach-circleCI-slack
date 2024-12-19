@@ -18,7 +18,7 @@ export class NPM_HomePage {
     }
 
     public click_exactSearchResult(value:string){
-        cy.xpath(this.link_exact_result).click();
+        cy.xpath(this.link_exact_result).click({force: true});
         return this;
     }
 
