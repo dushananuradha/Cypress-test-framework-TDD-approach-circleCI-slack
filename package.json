@@ -30,7 +30,8 @@
     "cy:run:common:spec": "set ENV_FILE=.env&&cypress run --spec 'cypress/e2e/npm-tests/test-mongodb.cy.ts'",
     "cy:op:setui": "set ENV_FILE=.envUI&&cypress open",
     "cy:run:setui:smoke": "set ENV_FILE=.envUI&&cypress run --env grep=smoke --browser chrome",
-    "cy:op:mongo":"set ENV_FILE=.envDB&&cypress open"
+    "cy:op:mongo":"set ENV_FILE=.envDB&&cypress open",
+    "cy:run:ci": "cypress run --record --key 9df61a48-6409-465a-9846-7f2fec12399e"
   },
   "author": "",
   "license": "ISC"
