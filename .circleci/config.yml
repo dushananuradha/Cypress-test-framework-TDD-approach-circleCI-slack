@@ -25,6 +25,8 @@ jobs:
           root: ~/
   run-tests:
     executor: cypress/default
+    environment:
+      ENV_FILE: .envDB
     steps:
       - attach_workspace:
           at: ~/
@@ -43,9 +45,7 @@ jobs:
             echo "COLLECTION_NAME: $COLLECTION_NAME"
       - cypress/run-tests:
           # parallelism: 2 # Uses 2 parallel instances
-          cypress-command: npx cypress run  \
-            --env ENV_FILE=.envDB \
-            --record --key 9df61a48-6409-465a-9846-7f2fec12399e
+          cypress-command: npm run cy:run:ci
 
 workflows:
   cy-test:
