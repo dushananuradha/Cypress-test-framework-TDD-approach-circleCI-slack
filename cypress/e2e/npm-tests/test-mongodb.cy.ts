@@ -2,7 +2,7 @@
 
 import { Player } from "../../support/types";
 
-const collectionToQuery = "players_all_sports";
+const collectionToQuery = Cypress.env('COLLECTION_NAME');
 const newPlayerObject = {
   name: "AB De Villiers",
   sport: "Cricket",

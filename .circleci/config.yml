@@ -20,28 +20,36 @@ jobs:
       - cypress/install
       - persist_to_workspace:
           paths:
-              - .cache/Cypress
-              - project
-          root: ~/  
+            - .cache/Cypress
+            - project
+          root: ~/
   run-tests:
     executor: cypress/default
     steps:
       - attach_workspace:
           at: ~/
+      - run:
+          name: Echo Environment Variables
+          command: |
+            echo "MONGO_URI: $MONGO_URI"
+            echo "DB_NAME: $DB_NAME"
+            echo "COLLECTION_NAME: $COLLECTION_NAME"
       - cypress/run-tests:
           # parallelism: 2 # Uses 2 parallel instances
-          cypress-command: npx cypress run --record --key 9df61a48-6409-465a-9846-7f2fec12399e
+          cypress-command: npx cypress run  \
+            --env MONGO_URI=$MONGO_URI,DB_NAME=$DB_NAME,COLLECTION_NAME=$COLLECTION_NAME \--record --key 9df61a48-6409-465a-9846-7f2fec12399e
+            
 
 workflows:
   cy-test:
     jobs:
-      - install-and-persist:           
+      - install-and-persist:
           filters:
             branches:
               only:
                 - master
       - run-tests:
-          requires: 
+          requires:
             - install-and-persist
           filters:
             branches:

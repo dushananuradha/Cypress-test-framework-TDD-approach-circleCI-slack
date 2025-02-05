@@ -1,13 +1,14 @@
 import { defineConfig } from "cypress";
-import { getPlayers, createPlayer, updatePlayer, deletePlayer } from "./cypress/utilities/dbOperations";
+
 require("dotenv").config();
 
 const dotenv = require("dotenv");
 const path = require("path");
 const mysql = require("mysql");
-
 const envFolderPath = "./env_files";
 const envFile = process.env.ENV_FILE || ".env";
+
+import { getPlayers, createPlayer, updatePlayer, deletePlayer } from "./cypress/utilities/dbOperations";
 
 export default defineConfig({
   projectId: "1vwv6f",
