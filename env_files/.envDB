@@ -1,5 +1,3 @@
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=password
-DB_NAME=cypresstest
-DB_PORT=3306
+MONGO_URI = mongodb+srv://da123:da123mongo@clusterda.uxusy.mongodb.net/
+DB_NAME=Players
+COLLECTION_NAME=players_all_sports

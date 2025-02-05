@@ -1,42 +1,45 @@
-// /// <reference types="cypress" />
+/// <reference types="cypress" />
 
-// import { User } from "../../support/types";
+import { Player } from "../../support/types";
 
-// const record = {
-//   userID: "088",
-//   name: "Head",
-// };
+const collectionToQuery = "players_all_sports";
+const newPlayerObject = {
+  name: "AB De Villiers",
+  sport: "Cricket",
+};
 
-// const query = {
-//   name: "Head",
-// };
+const queryUpdate = { name: "Kulasekara" };
+const updateObject = { sport: "Cricket", name: "Nuwan Kulasekara" };
 
-// describe("test db interactions", () => {
-//   it("Should be able to create new user", () => {
-//     cy.task("createUser", {
-//       record: record,
+const playerToDelete = { name: "Fahim" };
+
+describe("test db interactions", () => {
+//   it("Should create a new player", () => {
+//     cy.task("createPlayer", {
+//       record: newPlayerObject,
+//     }).then((result) => {
+//       expect(result).to.be.exist;
 //     });
 //   });
 
-//   it("Should be able to assert existing user", () => {
-//     cy.task("getUser", {
-//       query: query,
-//     }).then((result: User) => {
-//       expect(result).to.exist;
-//       expect(result.userID).to.equal("088");
-//       expect(result.name).to.equal("Head");
-//     });
+//   it("should update existing player", () => {
+//     cy.task("updatePlayer", { queryUpdate, updateObject }).then(
+//       (updatedPlayer: Player) => {
+//         expect(updatedPlayer).to.exist;
+//         expect(updatedPlayer.name).to.equal(updateObject.name);
+//       }
+//     );
 //   });
 
-//   it("Should be able to delete existing user", () => {
-//     cy.task("deleteUser", {
-//       query: query,
-//     }).then(() => {
-//       cy.task("getUser", {
-//         query: query,
-//       }).then((result) => {
-//         expect(result).to.be.null;
-//       });
-//     });
+//   it("Should delete existing user", () => {
+//     cy.task("deletePlayer", { findQueryToDelete: playerToDelete });
 //   });
-// });
+
+  it("Should retrieve all players", () => {
+    cy.task("getPlayers", {
+      dbCollection: collectionToQuery,
+    }).then((result) => {
+      expect(result).to.be.exist;
+    });
+  });
+});

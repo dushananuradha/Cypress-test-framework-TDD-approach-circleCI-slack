@@ -5,7 +5,7 @@ parameters:
     type: string
     default: "master"
 
-x-branch-filter: &branch_filter
+x-branch-filter:
   filters:
     branches:
       only: << pipeline.parameters.run_on_master >>
@@ -29,7 +29,8 @@ jobs:
       - attach_workspace:
           at: ~/
       - cypress/run-tests:
-          cypress-command: npx cypress run --record --key 8b1354f4-34f4-444e-a610-387819f489df
+          # parallelism: 2 # Uses 2 parallel instances
+          cypress-command: npx cypress run --record --key 9df61a48-6409-465a-9846-7f2fec12399e
 
 workflows:
   cy-test:

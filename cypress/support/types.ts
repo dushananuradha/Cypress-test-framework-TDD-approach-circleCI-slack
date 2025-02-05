@@ -1,5 +1,5 @@
-export interface User {
-    _id: string;
-    userID: string;
+export interface Player {
+    id: string;
     name: string;
+    sport: string;
   }
