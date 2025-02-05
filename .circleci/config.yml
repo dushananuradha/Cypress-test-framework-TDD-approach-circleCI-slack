@@ -29,16 +29,23 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: Create .envDB file
+          command: |
+            echo "MONGO_URI=$MONGO_URI" > ./env_files/.envDB
+            echo "DB_NAME=$DB_NAME" >> ./env_files/.envDB
+            echo "COLLECTION_NAME=$COLLECTION_NAME" >> ./env_files/.envDB
+      - run:
           name: Echo Environment Variables
           command: |
+            echo "ENV_FILE: $ENV_FILE"
             echo "MONGO_URI: $MONGO_URI"
             echo "DB_NAME: $DB_NAME"
             echo "COLLECTION_NAME: $COLLECTION_NAME"
       - cypress/run-tests:
           # parallelism: 2 # Uses 2 parallel instances
           cypress-command: npx cypress run  \
-            --env MONGO_URI=$MONGO_URI,DB_NAME=$DB_NAME,COLLECTION_NAME=$COLLECTION_NAME \--record --key 9df61a48-6409-465a-9846-7f2fec12399e
-            
+            --env ENV_FILE=.envDB \
+            --record --key 9df61a48-6409-465a-9846-7f2fec12399e
 
 workflows:
   cy-test:
