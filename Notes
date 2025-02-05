@@ -30,3 +30,9 @@ import dbConnection from "./cypress/fixtures/dbConnection.json";
  - Added following options in "compilerOptions"
     - "esModuleInterop": true
     - "resolveJsonModule": true
+
+Balance strategy
+ - Cypress will automatically balance your spec files across the available machines in your CI provider minimizing the overall test run duration.
+ - Cypress calculates which spec file to run based on the data collected from previous runs, and then, 
+ - distribute spec files to available CI resources in descending order of spec run duration. 
+ - the most time-consuming specs start first.

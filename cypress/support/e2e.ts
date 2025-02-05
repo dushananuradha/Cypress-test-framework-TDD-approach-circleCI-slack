@@ -19,13 +19,15 @@ import "cypress-mochawesome-reporter/register";
 import '@cypress/grep';
 
 import { addCommands } from "cypress-mongodb/dist/index-browser";
+
 addCommands();
 
 declare global {
   namespace Cypress {
-    interface Chainable {
+    // interface Chainable {
 
-    }
+    // }
+
   }
 }
 
